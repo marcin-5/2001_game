@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2001</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <div class="row">
+        <form action="/2001" method="POST">
+            <div class="col">
+                <fieldset class="fsg"{% if win == 1 %} style="background-color: #ACDFC3"{% endif %}>
+                    <legend> User: </legend>
+                    <label for="upts">Points: </label>
+                    <input type="text" class="iro" id="upts" name="upts" value="{{upts}}" readonly><br>
+                    <label for="ud1">dice 1:</label>
+                    <select name="ud1" id="ud1">
+                      {% for k in rk %}
+                        <option value="{{k}}"{% if k==ud1 %} selected{% endif %}>{{k}}</option>
+                      {% endfor %}
+                    </select>
+                    <label for="ud2">dice 2:</label>
+                    <select name="ud2" id="ud2">
+                      {% for k in rk %}
+                        <option value="{{k}}"{% if k==ud2 %} selected{% endif %}>{{k}}</option>
+                      {% endfor %}
+                    </select>
+                    {% if win == 0 %}
+                    <label>
+                        <button type="submit">
+                            &nbsp;Roll&nbsp;
+                        </button>
+                    </label>
+                    {% else %}
+                    <label class="nl"></label>
+                    {% endif %}
+                    <label for="ur1">Last roll: </label>
+                    <input type="text" class="iror" id="ur1" name="ur1" value="{{ur1}}" readonly>
+                    <label for="ur2"></label>
+                    <input type="text" class="iror" id="ur2" name="ur2" value="{{ur2}}" readonly>
+                </fieldset>
+            </div>
+            <div class="col">
+                <fieldset class="fsk"{% if win == 2 %} style="background-color: #ACDFC3"{% endif %}>
+                    <legend> Computer: </legend>
+                    <label for="cpts">Points: </label>
+                    <input type="text" class="iro" id="cpts" name="cpts" value="{{cpts}}" readonly><br>
+                    <label for="cd1">dice 1:</label>
+                    <input type="text" class="irok" id="cd1" name="cd1" value="{{cd1}}" readonly>
+                    <label for="cd2">dice 2:</label>
+                    <input type="text" class="irok" id="cd2" name="cd2" value="{{cd2}}" readonly>
+                    <label class="nl"></label>
+                    <label for="cr1">Last roll: </label>
+                    <input type="text" class="iror" id="cr1" name="ur1" value="{{cr1}}" readonly>
+                    <label for="cr2"></label>
+                    <input type="text" class="iror" id="cr2" name="ur2" value="{{cr2}}" readonly>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+    <br>
+</body>
+</html>

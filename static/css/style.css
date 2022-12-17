@@ -1,0 +1,55 @@
+.col {
+  width: 360px;
+  float: left;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+select {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.iro {
+  font-weight: bold;
+  width: 100px;
+  background: #f0d0d0;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.irok {
+  width: 48px;
+  background: #eaeaea;
+  margin-top: 12px;
+  margin-bottom: 14px;
+  margin-left: 6px;
+  margin-right: 6px;
+  padding: 0 6px;
+}
+
+.iror {
+  width: 48px;
+  background: #e0e0e0;
+  margin-bottom: 14px;
+  margin-left: 6px;
+  margin-right: 6px;
+  padding: 0 6px;
+}
+.fsg {
+  background: #f1f1f0;
+}
+
+.fsk {
+  background: #f0f0f2;
+}
+
+.nl {
+  display: block;
+}
