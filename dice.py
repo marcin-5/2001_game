@@ -82,7 +82,7 @@ def roll_the_dice_re(code):
         y = int(search(r"D(\d+)", code).group(1))
         if f"D{y}" not in POSSIBLE_DICES:
             return f"Not allowed dice: D{y}"
-    if search("[\=\-\d]+D", code):
+    if search("[\+\-\d]+D", code):
         return "Wrong dice code!"
     tmp = findall("[\+\-]", code)
     if len(tmp) > 1:
