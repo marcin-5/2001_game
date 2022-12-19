@@ -26,13 +26,13 @@ def game_2001():
     while user_points < 2001 and computer_points < 2001:
         print(f"Choose dices from: {', '.join(POSSIBLE_DICES)}.")
         dice1 = dice2 = None
-        while not dice1 or not dice1 in POSSIBLE_DICES:
+        while not dice1 or dice1 not in POSSIBLE_DICES:
             dice1 = input("Dice 1: ")
-            if  not dice1 in POSSIBLE_DICES:
+            if dice1 not in POSSIBLE_DICES:
                 print("Wrong input for dice 1:", dice1)
-        while not dice2 or not dice2 in POSSIBLE_DICES:
+        while not dice2 or dice2 not in POSSIBLE_DICES:
             dice2 = input("Dice 2: ")
-            if not dice2 in POSSIBLE_DICES:
+            if dice2 not in POSSIBLE_DICES:
                 print("Wrong input for dice 2:", dice2)
         user_roll_1 = roll_the_dice(dice1)
         user_roll_2 = roll_the_dice(dice2)
