@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, randrange
 from re import findall, search
 
 POSSIBLE_DICES = tuple(f"D{_}" for _ in (3, 4, 6, 8, 10, 12, 20, 100))
@@ -98,6 +98,11 @@ def roll_the_dice_re(code):
         else:
             z = 0 - int(z.group(1))
     return sum([randint(1, y) for _ in range(x)]) + z
+
+
+def random_dice():
+    """Return random dice"""
+    return POSSIBLE_DICES[randrange(0, len(POSSIBLE_DICES))]
 
 
 if __name__ == "__main__":

@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request
 from dice import roll_the_dice_re as roll_the_dice
-from dice import POSSIBLE_DICES
+from dice import POSSIBLE_DICES, random_dice
 from c2001 import calculate_points
-from random import randrange
 
 app = Flask(__name__)
 
@@ -18,8 +17,8 @@ def parse_turn(user_points=0, computer_points=0,
                user_dice_1="", user_dice_2=""):
     form_items_name = ("upts", "cpts", "ud1", "ud2", "cd1", "cd2",
                        "win", "ur1", "ur2", "cr1", "cr2", "rk")
-    computer_dice_1 = POSSIBLE_DICES[randrange(0, len(POSSIBLE_DICES))]
-    computer_dice_2 = POSSIBLE_DICES[randrange(0, len(POSSIBLE_DICES))]
+    computer_dice_1 = random_dice()
+    computer_dice_2 = random_dice()
     if not user_dice_1 and not user_dice_2:
         # start the game with default values
         user_roll_1 = user_roll_2 = 0
