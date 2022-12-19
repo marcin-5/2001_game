@@ -9,7 +9,7 @@
     <div class="row">
         <form action="/2001" method="POST">
             <div class="col">
-                <fieldset class="fsg"{% if win == 1 %} style="background-color: #ACDFC3"{% endif %}>
+                <fieldset class="fsg"{% if win == 1 or win == 3%} style="background-color: #ACDFC3"{% endif %}>
                     <legend> User: </legend>
                     <label for="upts">Points: </label>
                     <input type="text" class="iro" id="upts" name="upts" value="{{upts}}" readonly><br>
@@ -41,7 +41,7 @@
                 </fieldset>
             </div>
             <div class="col">
-                <fieldset class="fsk"{% if win == 2 %} style="background-color: #ACDFC3"{% endif %}>
+                <fieldset class="fsk"{% if win == 2 or win == 3%} style="background-color: #ACDFC3"{% endif %}>
                     <legend> Computer: </legend>
                     <label for="cpts">Points: </label>
                     <input type="text" class="iro" id="cpts" name="cpts" value="{{cpts}}" readonly><br>
