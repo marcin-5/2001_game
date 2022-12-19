@@ -28,12 +28,12 @@ def parse_turn(user_points=0, computer_points=0,
     else:
         user_roll_1 = roll_the_dice(user_dice_1)
         user_roll_2 = roll_the_dice(user_dice_2)
-        user_roll_sum = user_roll_1 + user_roll_2
         computer_roll_1 = roll_the_dice(computer_dice_1)
         computer_roll_2 = roll_the_dice(computer_dice_2)
-        computer_roll_sum = computer_roll_1 + computer_roll_2
-        user_points = calculate_points(user_roll_sum, user_points)
-        computer_points = calculate_points(computer_roll_sum, computer_points)
+        user_points = calculate_points(user_roll_1 + user_roll_2,
+                                       user_points)
+        computer_points = calculate_points(computer_roll_1 + computer_roll_2,
+                                           computer_points)
     win = max_true_index((True,
                           2001 < user_points > computer_points,
                           2001 < computer_points > user_points,
