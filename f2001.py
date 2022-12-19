@@ -5,8 +5,6 @@ from c2001 import calculate_points
 from random import randrange
 
 app = Flask(__name__)
-form_items_name = ("upts", "cpts", "ud1", "ud2", "cd1", "cd2",
-                   "win", "ur1", "ur2", "cr1", "cr2", "rk")
 
 
 def max_true_index(l):
@@ -18,6 +16,8 @@ def max_true_index(l):
 
 def parse_turn(user_points=0, computer_points=0,
                user_dice_1="", user_dice_2=""):
+    form_items_name = ("upts", "cpts", "ud1", "ud2", "cd1", "cd2",
+                       "win", "ur1", "ur2", "cr1", "cr2", "rk")
     computer_dice_1 = POSSIBLE_DICES[randrange(0, len(POSSIBLE_DICES))]
     computer_dice_2 = POSSIBLE_DICES[randrange(0, len(POSSIBLE_DICES))]
     if not user_dice_1 and not user_dice_2:
