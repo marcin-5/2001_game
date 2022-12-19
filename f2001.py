@@ -9,6 +9,13 @@ form_names = ("upts", "cpts", "ud1", "ud2", "cd1", "cd2",
               "win", "ur1", "ur2", "cr1", "cr2", "rk")
 
 
+def max_true_index(l):
+    """Return max index of True item in list"""
+    for i, x in reversed(list(enumerate(l))):
+        if x:
+            return i
+
+
 def parse_turn(user_points=0, computer_points=0,
                user_dice_1="", user_dice_2=""):
     computer_dice_1 = POSSIBLE_DICES[randrange(0, len(POSSIBLE_DICES))]
@@ -27,15 +34,10 @@ def parse_turn(user_points=0, computer_points=0,
         computer_roll_sum = computer_roll_1 + computer_roll_2
         user_points = calculate_points(user_roll_sum, user_points)
         computer_points = calculate_points(computer_roll_sum, computer_points)
-    if user_points > 2001 or computer_points > 2001:
-        if user_points > computer_points:
-            win = 1
-        elif user_points < computer_points:
-            win = 2
-        else:
-            win = 3
-    else:
-        win = 0
+    win = max_true_index((True,
+                          2001 < user_points > computer_points,
+                          2001 < computer_points > user_points,
+                          2001 < user_points == computer_points))
     return dict(zip(form_names,
                     (user_points, computer_points,
                      user_dice_1, user_dice_2,
