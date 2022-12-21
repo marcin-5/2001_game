@@ -12,6 +12,7 @@ def random_dice():
 
 
 def roll_the_dice(code):
+    """Return random number from range specified in dice code."""
     return randint(1, int(code[1:]))
 
 
