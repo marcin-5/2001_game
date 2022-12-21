@@ -1,9 +1,18 @@
 from flask import Flask, render_template, request
-from dice import roll_the_dice_re as roll_the_dice
-from dice import POSSIBLE_DICES, random_dice
 from c2001 import calculate_points
+from random import randint, randrange
 
+POSSIBLE_DICES = tuple(f"D{_}" for _ in (3, 4, 6, 8, 10, 12, 20, 100))
 app = Flask(__name__)
+
+
+def random_dice():
+    """Return random code of possible dices"""
+    return POSSIBLE_DICES[randrange(0, len(POSSIBLE_DICES))]
+
+
+def roll_the_dice(code):
+    return randint(1, int(code[1:]))
 
 
 def max_true_index(l):
