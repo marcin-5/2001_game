@@ -42,14 +42,14 @@ def calculate_points(roll, points):
     return points
 
 
-def game_2001():
+def game_2001(number_of_dices=2):
     """2001 game (console version)"""
     user_points = computer_points = 0
     while user_points < 2001 and computer_points < 2001:
-        user_rolls = roll_the_dices(2)[1]
+        user_rolls = roll_the_dices(number_of_dices)[1]
         user_rolls_sum = sum(user_rolls)
         user_points = calculate_points(user_rolls_sum, user_points)
-        computer_dices, computer_rolls = roll_the_dices(2, rnd=True)
+        computer_dices, computer_rolls = roll_the_dices(number_of_dices, rnd=True)
         computer_rolls_sum = sum(computer_rolls)
         computer_points = calculate_points(computer_rolls_sum, computer_points)
         print(user_rolls)
