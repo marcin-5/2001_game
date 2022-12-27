@@ -1,13 +1,12 @@
 from random import randint, randrange
 
-last_choice = []
 
-
-def roll_the_dices(number_of_dices, rnd=False):
+def roll_the_dices(number_of_dices, rnd=False, last_choice=[]):
     """
     Simulates roll the dices (random or from input)
     :param int number_of_dices:
     :param boolean rnd:
+    :param list last_choice:
     :return: Two tuples: codes of used dices and results
     """
     possible_dices = tuple(f"D{_}" for _ in (3, 4, 6, 8, 10, 12, 20, 100))
@@ -57,8 +56,9 @@ def calculate_points(roll, points):
 def game_2001(number_of_dices=2):
     """2001 game (console version)"""
     user_points = computer_points = 0
+    user_dices = []
     while user_points < 2001 and computer_points < 2001:
-        user_dices, user_rolls = roll_the_dices(number_of_dices)
+        user_dices, user_rolls = roll_the_dices(number_of_dices, last_choice=list(user_dices))
         user_rolls_sum = sum(user_rolls)
         user_points = calculate_points(user_rolls_sum, user_points)
         computer_dices, computer_rolls = roll_the_dices(number_of_dices, rnd=True)
