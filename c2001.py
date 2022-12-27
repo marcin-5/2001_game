@@ -92,4 +92,11 @@ def game_2001(number_of_dices=2):
 
 
 if __name__ == "__main__":
-    game_2001()
+    while True:
+        try:
+            n = int(input("Enter number of dices greater than 0 or exit otherwise: "))
+            if not n:
+                break
+            game_2001(n)
+        except TypeError:
+            break
