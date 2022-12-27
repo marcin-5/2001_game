@@ -64,7 +64,6 @@ def game_2001(number_of_dices=2):
         computer_dices, computer_rolls = roll_the_dices(number_of_dices, rnd=True)
         computer_rolls_sum = sum(computer_rolls)
         computer_points = calculate_points(computer_rolls_sum, computer_points)
-        print(user_rolls)
         print("User roll:", ", ".join(map(str, user_rolls)))
         print(f"Computer roll:", ", ".join(map(str, computer_rolls)), "Used dices:", ", ".join(computer_dices))
         print(f"User points: {user_points}, computer points: {computer_points}")
