@@ -1,4 +1,5 @@
 from random import randint, randrange
+from re import sub
 
 
 def roll_the_dices(number_of_dices, rnd=False, last_choice=[]):
@@ -53,6 +54,21 @@ def calculate_points(roll, points):
     return points
 
 
+def gprint(output):
+    """Print in green."""
+    print("\033[92m{}\033[00m".format(output))
+
+
+def rprint(output):
+    """Colorize digits in red and print."""
+    print(sub(r"(\d+)", lambda m: "\033[91m{}\033[00m".format(m.group()), output))
+
+
+def yprint(output):
+    """Colorize dice codes and digits in yellow and print"""
+    print(sub(r"([\d,D\s]{3,})", lambda m: "\033[93m{}\033[00m".format(m.group()), output))
+
+
 def game_2001(number_of_dices=2):
     """2001 game (console version)"""
     user_points = computer_points = 0
@@ -64,15 +80,15 @@ def game_2001(number_of_dices=2):
         computer_dices, computer_rolls = roll_the_dices(number_of_dices, rnd=True)
         computer_rolls_sum = sum(computer_rolls)
         computer_points = calculate_points(computer_rolls_sum, computer_points)
-        print("User roll:", ", ".join(map(str, user_rolls)))
-        print(f"Computer roll:", ", ".join(map(str, computer_rolls)), "Used dices:", ", ".join(computer_dices))
-        print(f"User points: {user_points}, computer points: {computer_points}")
+        yprint("User roll: " + ", ".join(map(str, user_rolls)))
+        yprint(f"Computer roll: " + ", ".join(map(str, computer_rolls)) + " Used dices: " + ", ".join(computer_dices))
+        rprint(f"User points: {user_points}, computer points: {computer_points}")
     if user_points > computer_points:
-        print("User win!!!")
+        gprint("User win!!!")
     elif user_points < computer_points:
-        print("Computer win!")
+        gprint("Computer win!")
     else:
-        print("DRAW")
+        gprint("DRAW")
 
 
 if __name__ == "__main__":
