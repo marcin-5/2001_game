@@ -34,7 +34,7 @@ def roll_the_dices(number_of_dices, rnd=False):
             else:
                 last_choice.append(code)
         results.append((code, randint(1, int(code[1:]))))
-    return tuple(_[0] for _ in results), tuple(_[1] for _ in results)
+    return zip(*results)
 
 
 def calculate_points(roll, points):
@@ -58,7 +58,7 @@ def game_2001(number_of_dices=2):
     """2001 game (console version)"""
     user_points = computer_points = 0
     while user_points < 2001 and computer_points < 2001:
-        user_rolls = roll_the_dices(number_of_dices)[1]
+        user_dices, user_rolls = roll_the_dices(number_of_dices)
         user_rolls_sum = sum(user_rolls)
         user_points = calculate_points(user_rolls_sum, user_points)
         computer_dices, computer_rolls = roll_the_dices(number_of_dices, rnd=True)
