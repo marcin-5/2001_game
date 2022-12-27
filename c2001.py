@@ -1,5 +1,7 @@
 from random import randint, randrange
 
+last_choice = []
+
 
 def roll_the_dices(number_of_dices, rnd=False):
     """
@@ -18,9 +20,19 @@ def roll_the_dices(number_of_dices, rnd=False):
         else:
             code = ""
             while not code or code not in possible_dices:
-                code = input(f"Dice {i+1}: ")
-                if code not in possible_dices:
+                try:
+                    lc = f" ({last_choice[i]})"
+                except IndexError:
+                    lc = ""
+                code = input(f"Dice {i+1}{lc}: ")
+                if lc and not code:
+                    code = last_choice[i]
+                elif code not in possible_dices:
                     print(f"Wrong input for dice {i+1}!")
+            if lc:
+                last_choice[i] = code
+            else:
+                last_choice.append(code)
         results.append((code, randint(1, int(code[1:]))))
     return tuple(_[0] for _ in results), tuple(_[1] for _ in results)
 
