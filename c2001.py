@@ -98,5 +98,5 @@ if __name__ == "__main__":
             if not n:
                 break
             game_2001(n)
-        except TypeError:
+        except ValueError:
             break
