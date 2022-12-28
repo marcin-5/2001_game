@@ -14,7 +14,8 @@ def roll_the_dices(number_of_dices, rnd=False, last_choice=[]):
     results = []
     for i in range(number_of_dices):
         if not i:
-            print(f"Choose dice{'s' if number_of_dices > 1 else ''} from: {', '.join(possible_dices)}.")
+            print(f"Choose dice{'s' if number_of_dices > 1 else ''}",
+                  f"from: {', '.join(possible_dices)}.")
         if rnd:
             code = possible_dices[randrange(len(possible_dices))]
         else:
@@ -61,12 +62,16 @@ def gprint(output):
 
 def rprint(output):
     """Colorize digits in red and print."""
-    print(sub(r"(\d+)", lambda m: "\033[91m{}\033[00m".format(m.group()), output))
+    print(sub(r"(\d+)",
+              lambda m: "\033[91m{}\033[00m".format(m.group()),
+              output))
 
 
 def yprint(output):
     """Colorize dice codes and digits in yellow and print"""
-    print(sub(r"([\d,D\s]{3,})", lambda m: "\033[93m{}\033[00m".format(m.group()), output))
+    print(sub(r"([\d,D\s]{3,})",
+              lambda m: "\033[93m{}\033[00m".format(m.group()),
+              output))
 
 
 def game_2001(number_of_dices=2):
@@ -74,14 +79,17 @@ def game_2001(number_of_dices=2):
     user_points = computer_points = 0
     user_dices = []
     while user_points < 2001 and computer_points < 2001:
-        user_dices, user_rolls = roll_the_dices(number_of_dices, last_choice=list(user_dices))
+        user_dices, user_rolls = roll_the_dices(number_of_dices,
+                                                last_choice=list(user_dices))
         user_rolls_sum = sum(user_rolls)
         user_points = calculate_points(user_rolls_sum, user_points)
         computer_dices, computer_rolls = roll_the_dices(number_of_dices, rnd=True)
         computer_rolls_sum = sum(computer_rolls)
         computer_points = calculate_points(computer_rolls_sum, computer_points)
         yprint("User roll: " + ", ".join(map(str, user_rolls)))
-        yprint(f"Computer roll: " + ", ".join(map(str, computer_rolls)) + " Used dices: " + ", ".join(computer_dices))
+        yprint(f"Computer roll: "
+               + ", ".join(map(str, computer_rolls))
+               + " Used dices: " + ", ".join(computer_dices))
         rprint(f"User points: {user_points}, computer points: {computer_points}")
     if user_points > computer_points:
         gprint("User win!!!")
