@@ -91,12 +91,9 @@ def game_2001(number_of_dices=2):
                + ", ".join(map(str, computer_rolls))
                + " Used dices: " + ", ".join(computer_dices))
         rprint(f"User points: {user_points}, computer points: {computer_points}")
-    if user_points > computer_points:
-        gprint("User win!!!")
-    elif user_points < computer_points:
-        gprint("Computer win!")
-    else:
-        gprint("DRAW")
+    gprint("User win!!!" if user_points > computer_points else
+           "Computer win!" if user_points < computer_points else
+           "DRAW")
 
 
 if __name__ == "__main__":
